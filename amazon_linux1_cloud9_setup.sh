@@ -33,14 +33,15 @@
 # in case things get messed up.
 
 # The mpc configuration file
-MPC_DJANGO_ENV=./mpc.env
+MPC_DJANGO_ENV=./.env
 
 # The file in which to store the MySQL root password in case of issues
 MYSQL_ROOT_PASSWORD_FILE=$HOME/MYSQL_ROOT_PASSWORD
 
 echo checking for Amazon Linux version 1...
-expr index `uname -r` amzn1
-if [ $? -eq 0 ]
+KERNEL_RELEASE=`uname -r`
+I=expr index "$KERNEL_RELEASE" amzn1
+if [ $I -eq 0 ]
 then
     echo "The operating system is not Amazon Linux 1."
     exit 1

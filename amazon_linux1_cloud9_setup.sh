@@ -17,6 +17,7 @@
 # - Does some basic MySQL security configuration
 # - Sets up the mpc database
 # - Sets up a python3 virtual environment
+# - Initializes Django
 #
 # Security notes:
 #
@@ -37,6 +38,11 @@ MPC_DJANGO_ENV=./.env
 
 # The file in which to store the MySQL root password in case of issues
 MYSQL_ROOT_PASSWORD_FILE=$HOME/MYSQL_ROOT_PASSWORD
+
+# The number of seconds to sleep at various points in the script.
+# This is useful in catching errors.
+
+SLEEP_TIME=1
 
 echo checking for Amazon Linux version 1...
 KERNEL_RELEASE=`uname -r`
@@ -131,6 +137,10 @@ sleep 1
 echo "granting privileges on mpc database tabkes..."
 mysql -u root -p$MYSQL_ROOT_PASSWORD \
 -e "GRANT ALL PRIVILEGES on mpc.* to mpcuser@localhost;"
+sleep 1
+
+echo "enabling mysqld to start automatically at boot time..."
+sudo chkconfig mysqld on
 sleep 1
 
 echo "creating mpc Django environment file..."

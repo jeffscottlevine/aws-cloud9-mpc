@@ -40,7 +40,7 @@ MYSQL_ROOT_PASSWORD_FILE=$HOME/MYSQL_ROOT_PASSWORD
 
 echo checking for Amazon Linux version 1...
 KERNEL_RELEASE=`uname -r`
-I=expr index "$KERNEL_RELEASE" amzn1
+I=`expr index "$KERNEL_RELEASE" amzn1`
 if [ $I -eq 0 ]
 then
     echo "The operating system is not Amazon Linux 1."

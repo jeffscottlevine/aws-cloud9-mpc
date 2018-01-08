@@ -13,7 +13,8 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
 
-<h1>MyPollingCompany</h1>
+<h1><a href="{% url 'home' %}">MyPollingCompany</a></h1>
+
 <h1>{{ question.question_text }}</h1>
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}

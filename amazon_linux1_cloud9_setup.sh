@@ -179,7 +179,8 @@ echo 1. unalias python
 echo 2. source env/bin/activate
 echo 3. python manage.py createsuperuser
 echo 4. python manage.py runserver 0:8080 
-echo 5. browse to the appropriate URL:8080/admin/
-echo 6. set up any users, questions, and choices
-echo 7. browe to the appropriate URL:8080/polls/
-echo 8. play around with the polls
+echo 5. select "Preview->Preview Running Application" from the menu
+echo 6. if the site does not appear in the preview window, click on "pop out"
+echo 7. select "Administration" and set up any users, questions, and choices
+echo 8. select "View Site" from the Administration page to go to the homepage
+echo 9. select "Polls" and play around with the questions

@@ -19,12 +19,12 @@ This repo contains the files associated with the django polling tutorial that ca
 
 2. I am usinmg MySQL for the backend.
 
-# Security Considerations:
+# Security Considerations
 
 1. This is a demo and is not built with strong security in mind.
 2. The passwords are short and are generated with pwgen.
 3. Passwords are used on command lines - a strong no no!
 
-# Attribution:
+# Attribution
 
 1. The background image is from Kelli Tungay and came from https://unsplash.com/photos/RAVdOqWXPvg.

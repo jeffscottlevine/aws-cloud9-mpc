@@ -9,15 +9,16 @@ This repo contains the files associated with the django polling tutorial that ca
 1.  git config --global user.name "your name"
 2.  git config --global user.email "your email"
 3.  git clone "the https URL from github"
-4.  ./amazon_linux1_cloud9_setup.sh
-5.  unalias python
-6.  source env/bin/activate
-7.  python manage.py createsuperuser
-8.  python manage.py runserver 0:8080 
-9.  browse to the appropriate URL:8080/admin
-10. set up any users, questions, and choices
-11. browse to the appropriate URL:8080/polls/
-12. play around with the polls
+4.  cd mpc
+5.  ./amazon_linux1_cloud9_setup.sh
+6.  unalias python
+7.  source env/bin/activate
+8.  python manage.py createsuperuser
+9.  python manage.py runserver 0:8080 
+10. browse to the appropriate URL:8080/admin
+11. set up any users, questions, and choices
+12. browse to the appropriate URL:8080/polls/
+13. play around with the polls
 
 # Notes
 

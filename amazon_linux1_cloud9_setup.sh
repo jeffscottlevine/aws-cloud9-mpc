@@ -11,6 +11,7 @@
 #
 # - Installs mysql-devel which is needed for Django
 # - Installs pwgen to generate passwords
+# - Installs jq to help determine the instance region
 # - Starts mysqld
 # - Generates password for the MySQL root user
 # - Generates password for the MySQL mpc user
@@ -61,8 +62,8 @@ then
 fi
 sleep $SLEEP_TIME
 
-echo installing mysql-devel and pwgen...
-sudo yum install -y -q mysql-devel pwgen
+echo installing mysql-develm pwgen, and jq...
+sudo yum install -y -q mysql-devel pwgen jq
 if [ $? -ne 0 ]
 then
     echo Unable to install pacakges.
@@ -81,6 +82,10 @@ sleep $SLEEP_TIME
 
 echo generating Django secret key...
 DJANGO_SECRET_KEY=`pwgen -s 50 1`
+sleep $SLEEP_TIME
+
+echo determining region...
+AWS_REGION=`curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq -r .region`
 sleep $SLEEP_TIME
 
 echo getting ready to start mysqld...
@@ -148,6 +153,7 @@ echo "DB_USER=mpcuser" >> $MPC_DJANGO_ENV
 echo "DB_PASSWORD=$MYSQL_MPCUSER_PASSWORD" >> $MPC_DJANGO_ENV
 echo "DB_HOST=localhost" >> $MPC_DJANGO_ENV
 echo "TIME_ZONE=America/Los_Angeles" >> $MPC_DJANGO_ENV
+echo "ALLOWED_DOMAIN=.cloud9.$AWS_REGION.amazonaws.com" >> $MPC_DJANGO_ENV
 sleep $SLEEP_TIME
 
 echo setting up Python environment...

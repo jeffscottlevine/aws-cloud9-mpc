@@ -160,4 +160,13 @@ sleep 1
 echo
 echo Initial set up complete!
 echo
-echo Follow the instructions in README.md for what to do next!
+echo Now do the following
+
+echo 1. unalias python
+echo 2. source env/bin/activate
+echo 3. python manage.py createsuperuser
+echo 4. python manage.py runserver 0:8080 
+echo 5. browse to the appropriate URL:8080/admin/
+echo 6. set up any users, questions, and choices
+echo 7. browe to the appropriate URL:8080/polls/
+echo 8. play around with the polls

@@ -40,9 +40,8 @@ MPC_DJANGO_ENV=./.env
 MYSQL_ROOT_PASSWORD_FILE=$HOME/MYSQL_ROOT_PASSWORD
 
 # The number of seconds to sleep at various points in the script.
-# This is useful in catching errors.
-
-SLEEP_TIME=1
+# This is useful in catching errors.  Set this to at least 2.
+SLEEP_TIME=2
 
 echo checking for Amazon Linux version 1...
 KERNEL_RELEASE=`uname -r`
@@ -52,12 +51,15 @@ then
     echo "The operating system is not Amazon Linux 1."
     exit 1
 fi
+sleep $SLEEP_TIME
 
+echo checking for presence of AWS Cloud9...
 if [ ! -L $HOME/.c9 ]
 then
     echo "This does not appear to be an AWS Cloud 9 EC2 instance."
     exit 1
 fi
+sleep $SLEEP_TIME
 
 echo "installing mysql-devel..."
 sudo yum install -y -q mysql-devel
@@ -66,7 +68,7 @@ then
     echo "Unable to install mysql-devel."
     exit 1
 fi
-sleep 1
+sleep $SLEEP_TIME
 
 echo "installing pwgen..."
 sudo yum install -y -q pwgen
@@ -75,7 +77,7 @@ then
     echo "Unable to install pwgen."
     exit 1
 fi
-sleep 1
+sleep $SLEEP_TIME
 
 echo "starting mysqld..."
 sudo service mysqld start
@@ -84,64 +86,64 @@ then
     echo "Unable to start mysqld."
     exit 1
 fi
-sleep 1
+sleep $SLEEP_TIME
 
 echo "generating MySQL root password..."
 MYSQL_ROOT_PASSWORD=`pwgen 8 1`
 echo $MYSQL_ROOT_PASSWORD > $HOME/MYSQL_ROOT_PASSWORD
-sleep 1
+sleep $SLEEP_TIME
 
 echo generating MySQL mpcuser password...
 MYSQL_MPCUSER_PASSWORD=`pwgen 8 1`
-sleep 1
+sleep $SLEEP_TIME
 
 echo generating Django secret key...
 DJANGO_SECRET_KEY=`pwgen -s 50 1`
-sleep 1
+sleep $SLEEP_TIME
 
 echo "setting MySQL root password..."
 mysql -u root \
 -e "UPDATE mysql.user SET Password=PASSWORD('$MYSQL_ROOT_PASSWORD') WHERE User='root';"
-sleep 1
+sleep $SLEEP_TIME
 
 echo "disabling MySQL remote root login..."
 mysql -u root \
 -e "DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');"
-sleep 1
+sleep $SLEEP_TIME
 
 echo "removing anonymous MySQL users..."
 mysql -u root \
 -e "DELETE FROM mysql.user WHERE User='';"
-sleep 1
+sleep $SLEEP_TIME
 
 echo "dropping test MySQL database..."
 mysql -u root \
 -e "DROP DATABASE test;"
-sleep 1
+sleep $SLEEP_TIME
 
 echo "flushing MySQL privileges..."
 mysql -u root \
 -e "FLUSH PRIVILEGES;"
-sleep 1
+sleep $SLEEP_TIME
 
 echo "creating mpc database..."
 mysql -u root -p$MYSQL_ROOT_PASSWORD \
 -e "CREATE DATABASE mpc character set UTF8;"
-sleep 1
+sleep $SLEEP_TIME
 
 echo "creating mpcuser..."
 mysql -u root -p$MYSQL_ROOT_PASSWORD \
 -e "CREATE USER mpcuser@localhost identified by '$MYSQL_MPCUSER_PASSWORD';"
-sleep 1
+sleep $SLEEP_TIME
 
 echo "granting privileges on mpc database tabkes..."
 mysql -u root -p$MYSQL_ROOT_PASSWORD \
 -e "GRANT ALL PRIVILEGES on mpc.* to mpcuser@localhost;"
-sleep 1
+sleep $SLEEP_TIME
 
 echo "enabling mysqld to start automatically at boot time..."
 sudo chkconfig mysqld on
-sleep 1
+sleep $SLEEP_TIME
 
 echo "creating mpc Django environment file..."
 echo "SECRET_KEY=$DJANGO_SECRET_KEY" > $MPC_DJANGO_ENV
@@ -151,21 +153,21 @@ echo "DB_USER=mpcuser" >> $MPC_DJANGO_ENV
 echo "DB_PASSWORD=$MYSQL_MPCUSER_PASSWORD" >> $MPC_DJANGO_ENV
 echo "DB_HOST=localhost" >> $MPC_DJANGO_ENV
 echo "TIME_ZONE=America/Los_Angeles" >> $MPC_DJANGO_ENV
-sleep 1
+sleep $SLEEP_TIME
 
 echo setting up Python environment...
 unalias python 2>/dev/null
 virtualenv --python=/usr/bin/python3 env
 source env/bin/activate
-sleep 1
+sleep $SLEEP_TIME
 
 echo install Python modules...
 pip install -r requirements.txt
-sleep 1
+sleep $SLEEP_TIME
 
 echo setting up Django database tables...
 python manage.py migrate
-sleep 1
+sleep $SLEEP_TIME
 
 echo
 echo Initial set up complete!

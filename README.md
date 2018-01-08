@@ -6,12 +6,16 @@ This repo contains the files associated with the django polling tutorial that ca
 
 # Instructions for Amazon Linux 1 with the Cloud9 IDE on its own EC2 instance
 
-1.  git config --global user.name "your name"
-2.  git config --global user.email "your email"
-3.  git clone "the https URL from github"
-4.  cd mpc
-5.  ./amazon_linux1_cloud9_setup.sh
-6.  Follow the instructions displayed at the conclusion of the script.`
+1.  Create an AWS Cloud9 environment in its own instance, not an ssh instance.
+2.  Open the environment.
+3.  Go to the existing terminal window or open up a new bash window.
+4.  cd $HOME/environment
+5.  git config --global user.name "your name"
+6.  git config --global user.email "your email"
+7.  git clone "the https URL from github"
+8.  cd mpc
+9.  ./amazon_linux1_cloud9_setup.sh
+10. Follow the instructions displayed at the conclusion of the script.`
 
 # Notes
 

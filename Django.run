@@ -1,0 +1,10 @@
+{
+  "cmd": [
+    "bash",
+    "--login",
+    "-c",
+    "source env/bin/activate && python manage.py runserver $ip:$port"
+  ],
+  "script": "",
+  "working_dir": "$project_path/mpc"
+}

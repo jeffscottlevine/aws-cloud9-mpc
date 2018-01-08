@@ -44,6 +44,9 @@ MYSQL_ROOT_PASSWORD_FILE=$HOME/MYSQL_ROOT_PASSWORD
 # This is useful in catching errors.  Set this to at least 2.
 SLEEP_TIME=2
 
+# Directory for runners
+RUNNER_DIR=./.c9/runners
+
 echo checking for Amazon Linux version 1...
 KERNEL_RELEASE=`uname -r`
 I=`expr index "$KERNEL_RELEASE" amzn1`
@@ -83,6 +86,10 @@ sleep $SLEEP_TIME
 echo generating Django secret key...
 DJANGO_SECRET_KEY=`pwgen -s 50 1`
 sleep $SLEEP_TIME
+
+echo copying runner...
+cp Django.run $RUNNER_DIR
+chmod 644 $RUNNER_DIR/Django.run
 
 echo determining region...
 AWS_REGION=`curl -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq -r .region`

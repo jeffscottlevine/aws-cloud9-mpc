@@ -61,20 +61,11 @@ then
 fi
 sleep $SLEEP_TIME
 
-echo installing mysql-devel...
-sudo yum install -y -q mysql-devel
+echo installing mysql-devel and pwgen...
+sudo yum install -y -q mysql-devel pwgen
 if [ $? -ne 0 ]
 then
-    echo Unable to install mysql-devel.
-    exit 1
-fi
-sleep $SLEEP_TIME
-
-echo installing pwgen...
-sudo yum install -y -q pwgen
-if [ $? -ne 0 ]
-then
-    echo Unable to install pwgen.
+    echo Unable to install pacakges.
     exit 1
 fi
 sleep $SLEEP_TIME

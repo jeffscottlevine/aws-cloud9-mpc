@@ -6,7 +6,7 @@ I wanted to learn about the [Django](https://www.djangoproject.com/) web framewo
 
 # Instructions for Amazon Linux 1 with the Cloud9 IDE on its own EC2 instance
 
-1.  Create an AWS Cloud9 environment in its own instance, not an ssh instance.
+1.  Create an AWS Cloud9 environment in its own instance, not an ssh instance. A t2.micro instance is good enough.
 2.  Open the environment.
 3.  Go to the existing terminal window or open up a new bash window.
 4.  cd $HOME/environment

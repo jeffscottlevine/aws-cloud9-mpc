@@ -18,7 +18,7 @@ I wanted to learn about the [Django](https://www.djangoproject.com/) web framewo
 
 # Financial Considerations
 
-There are costs for the AWS resources used by this repo.  You are responsible for all such costs.
+1. There are costs for the AWS resources used by this repo.  You are responsible for all such costs.
 
 # Notes
 

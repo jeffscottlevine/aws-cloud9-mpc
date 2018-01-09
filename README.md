@@ -13,7 +13,7 @@ I wanted to learn about the [Django](https://www.djangoproject.com/) web framewo
 5.  git clone "the https URL from github"
 6.  cd mpc
 7.  ./amazon_linux1_cloud9_setup.sh
-8.  Follow the instructions displayed at the conclusion of the script.`
+8.  Follow the instructions displayed at the conclusion of the script.
 9.  When you are done, delete your AWS Cloud9 workspace so you no longer incur charges from AWS.
 
 # Financial Considerations

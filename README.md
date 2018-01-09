@@ -40,4 +40,4 @@ I wanted to learn about the [Django](https://www.djangoproject.com/) web framewo
 
 # Attribution
 
-1. The background image is from Kelli Tungay and came from https://unsplash.com/photos/RAVdOqWXPvg.
+1. The background image that is provided is by Kelli Tungay and came from https://unsplash.com/photos/RAVdOqWXPvg.

@@ -23,6 +23,7 @@ I wanted to learn about the [Django](https://www.djangoproject.com/) web framewo
 # Notes
 
 1. The files may contain multiple versions of content.  I did this so I could keep track of what changed throughout the tutorial.
+2. THis was a "side project" for my own learning and does not represent Amazon Web Services.
 
 2. I am usinmg MySQL for the backend.
 

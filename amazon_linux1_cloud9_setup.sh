@@ -187,7 +187,7 @@ echo Now do the following
 echo 1.  unalias python
 echo 2.  source env/bin/activate
 echo 3.  python manage.py createsuperuser
-echo 4.  Navigate to and open the file "manage.py" and open it in a tab.
+echo 4.  Navigate to and open the file "manage.py" in a workspace tab.
 echo 5.  From the menu, click Run with->Django.
 echo 6.  A message will appear with a link to click which brings up the app.
 echo 7.  Select "Administration" and set up any users, questions, and choices.

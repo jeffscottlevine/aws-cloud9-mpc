@@ -1,6 +1,6 @@
 # Introduction
 
-This repo contains the files associated with the django polling tutorial that can be found at https://www.djangoproject.com/.  I decided to name this project, MyPollingCompany, hence the name "mpc."  I am currently writing this to operate udner the following platforms.
+I wanted to learn about Django and I also wanted to get some experience using AWS Cloud9 but needed a good starting environment.   That led to the creation of this repo.   This repo contains the files associated with the Django polling tutorial that can be found at https://www.djangoproject.com/.  I decided to name this project, MyPollingCompany, hence the name "mpc." The repo currently supports the following platform: 
 
 1. Amazon Linux 1 with the Cloud9 IDE on its own EC2 instance.
 
@@ -14,6 +14,11 @@ This repo contains the files associated with the django polling tutorial that ca
 6.  cd mpc
 7.  ./amazon_linux1_cloud9_setup.sh
 8.  Follow the instructions displayed at the conclusion of the script.`
+9.  When you are done, delete your AWS Cloud9 workspace so you no longer incur charges from AWS.
+
+# Financial Considerations
+
+There are costs for the AWS resources used by this repo.  You are responsible for all such costs.
 
 # Notes
 

@@ -12,6 +12,7 @@
 # - Installs mysql-devel which is needed for Django
 # - Installs pwgen to generate passwords
 # - Installs jq to help determine the instance region
+# - Installs an AWS Cloud9 "runner."
 # - Starts mysqld
 # - Generates password for the MySQL root user
 # - Generates password for the MySQL mpc user
@@ -183,12 +184,13 @@ echo Initial set up complete!
 echo
 echo Now do the following
 
-echo 1. unalias python
-echo 2. source env/bin/activate
-echo 3. python manage.py createsuperuser
-echo 4. python manage.py runserver 0:8080 
-echo 5. select "Preview->Preview Running Application" from the menu
-echo 6. if the site does not appear in the preview window, click on "pop out"
-echo 7. select "Administration" and set up any users, questions, and choices
-echo 8. select "View Site" from the Administration page to go to the homepage
-echo 9. select "Polls" and play around with the questions
+echo 1.  unalias python
+echo 2.  source env/bin/activate
+echo 3.  python manage.py createsuperuser
+echo 4.  python manage.py runserver 0:8080 
+echo 5.  Navigate to and open the file "manage.py" and open it in a tab.
+echo 6.  From the menu, click Run with->Django. The app homepage will appear.
+echo 7.  Select "Administration" and set up any users, questions, and choices.
+echo 8.  Select "View Site" from the Administration page to go to the homepage.
+echo 9.  Select "Polls" and play around with the questions.
+echo 10. When you are done, delete the Cloud9 workspace.

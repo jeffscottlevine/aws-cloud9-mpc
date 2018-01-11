@@ -84,6 +84,11 @@ echo generating MySQL mpcuser password...
 MYSQL_MPCUSER_PASSWORD=`pwgen 8 1`
 sleep $SLEEP_TIME
 
+echo generating Django superuser password...
+DJANGO_SUPERUSER_PASSWORD=`pwgen 8 1`
+echo $DJANGO_SUPERUSER_PASSWORD > $HOME/DJANGO_SUPERUSER_PASSWORD
+sleep $SLEEP_TIME
+
 echo generating Django secret key...
 DJANGO_SECRET_KEY=`pwgen -s 50 1`
 sleep $SLEEP_TIME
@@ -179,18 +184,23 @@ echo setting up Django database tables...
 python manage.py migrate
 sleep $SLEEP_TIME
 
+echo creating Django superuser $USER...
+echo "from django.contrib.auth.models import User; User.objects.create_superuser('$USER', '', '$DJANGO_SUPERUSER_PASSWORD')" | python manage.py shell
+sleep $SLEEP_TIME
+
 echo
 echo Initial set up complete!
 echo
+echo See this file for the Django superuser password: $HOME/DJANGO_SUPERUSER_PASSWORD
+echo See this file for the MySQL mpcuser password: $HOME/MYSQL_MPCUSER_PASSWORD
+echo
 echo Now do the following
 
-echo 1.  unalias python
-echo 2.  source env/bin/activate
-echo 3.  python manage.py createsuperuser
-echo 4.  Navigate to and open the file "manage.py" in a workspace tab.
-echo 5.  From the menu, click Run with->Django.
-echo 6.  A message will appear with a link to click which brings up the app.
-echo 7.  Select "Administration" and set up any users, questions, and choices.
-echo 8.  Select "View Site" from the Administration page to go to the homepage.
-echo 9.  Select "Polls" and play around with the questions.
-echo 10. When you are done, delete the Cloud9 workspace.
+echo 1.  Navigate to and open the file "manage.py" in a workspace tab.
+echo 2.  From the menu, click Run with->Django.
+echo 3.  A message will appear with a link to click which brings up the app.
+echo 4.  Select "Administration" and log in with user $USER and password $DJANGO_SUPERUSER_PASSWORD.
+echo 5.  Set up any users, questions, and choices.
+echo 6.  Select "View Site" from the Administration page to go to the homepage.
+echo 7.  Select "Polls" and play around with the questions.
+echo 8.  When you are done, delete the Cloud9 workspace to stop further AWS charges.

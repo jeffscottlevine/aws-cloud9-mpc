@@ -196,8 +196,8 @@ echo See this file for the MySQL mpcuser password: $HOME/MYSQL_MPCUSER_PASSWORD
 echo
 echo Now do the following
 
-echo 1.  Navigate to and open the file "manage.py" in a workspace tab.
-echo 2.  From the menu, click Run with->Django.
+echo 1.  Navigate to and open the file manage.py in a workspace tab.
+echo 2.  From the menu, click Run with\-\>Django.
 echo 3.  A message will appear with a link to click which brings up the app.
 echo 4.  Select "Administration" and log in with user $USER and password $DJANGO_SUPERUSER_PASSWORD.
 echo 5.  Set up any users, questions, and choices.
